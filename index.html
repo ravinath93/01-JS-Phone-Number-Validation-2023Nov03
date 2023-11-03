@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width= , initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      margin: auto;
+      background-color: orange;
+      width: 500px;
+      /* height: 30vh; */
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titile{
+      color: white;
+      font-family:fantasy;
+      font-size: 50px;
+      text-align: center;
+    }
+
+
+    #num{
+      border: 3px solid green;
+      border-radius: 20px;
+      padding: 20px; 
+      font-size: 30px;
+      width: 300px;  
+      text-align: center;   
+    }
+
+    #out-put-1{
+      color: black;
+      font-size: 20px;
+    }
+
+    #out-put-2{
+      color: black;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    button{
+      background-color: green;     
+      border: none;
+      padding: 15px 30px;
+      color: white;
+      font-size:20px;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+
+    button:hover{
+      background-color: rgb(8, 165, 8);    
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <p class="titile">Enter Mobile number</p>
+    <!-- <textarea name="" id="num" cols="20" rows="1"></textarea> -->
+
+    <input id="num" type="number" >
+    <br>
+    
+    <button onclick="
+    validation()
+    ">Validate</button>
+  
+    <p id="out-put-1"></p>
+    <p id="out-put-2"></p>
+  </div>
+ 
+
+  <!-- script -->
+  <script>
+    function validation(){
+      // phone varible එකට ගන්නව input value එක.
+      let phone = document.getElementById("num").value;
+      console.log(phone)
+      document.getElementById("out-put-1").innerHTML=phone;
+
+      // numLenth varible එකට ගන්නව input value length එක.
+      let numLenth = phone.length;
+      console.log(numLenth)
+
+      // firstNum varible එකට ගන්නව input value එකේ first letters දෙක.
+      let firstNum = phone.substr(0,2)
+      console.log(firstNum)
+
+      // lastNum varible එකට ගන්නව input value එකේ අන්තිම අංක 9.
+      let lastNum = phone.substr(numLenth-9 , 9)
+      console.log(lastNum)
+
+      let num ;
+
+      if (numLenth < 9){
+        alert("Numbers Missing (numLenth < 9 ), Plece Check again");
+        document.getElementById("out-put-1").innerHTML="Numbers Missing (numLenth < 9 ), Plece Check again"; 
+
+      } else if ( numLenth == 9){
+        alert("Number Validation sucess full (numLenth == 9)");
+        document.getElementById("out-put-1").innerHTML="Number Validation sucess full (numLenth == 9)";
+
+        num = "94" + phone;
+        document.getElementById("out-put-2").innerHTML=num;
+
+      } else if ( numLenth == 10){
+        alert("Number Validation sucess full (numLenth == 10)");
+        document.getElementById("out-put-1").innerHTML="Number Validation sucess full (numLenth == 10)";
+
+        num = "94" + lastNum;
+        document.getElementById("out-put-2").innerHTML=num;
+
+      } else if ( numLenth > 11){
+        alert("Invalid, Plece Check again (numLenth > 11 )");
+        document.getElementById("out-put-1").innerHTML="Invalid, Plece Check again (numLenth > 11 )"; 
+ 
+      } else if (numLenth == 11 && firstNum != 94 ){
+        alert("Invalid, Plece Check again [numLenth == 11 && firstNum != 94]");
+        document.getElementById("out-put-1").innerHTML="Invalid, Plece Check again [numLenth == 11 && firstNum != 94]";
+
+      } else if (numLenth == 11 && firstNum == 94 ){
+        num = phone;
+        alert("Number Validation sucess full(numLenth == 11 && firstNum == 94)");
+        document.getElementById("out-put-1").innerHTML="Number Validation sucess full(numLenth == 11 && firstNum == 94)";
+        document.getElementById("out-put-2").innerHTML=num;
+
+      } else {
+        alert("Invalid, Plece Check again");
+        document.getElementById("out-put-1").innerHTML="Invalid, Plece Check again";
+      }
+      
+    }
+
+  </script>
+</body>
+</html>
